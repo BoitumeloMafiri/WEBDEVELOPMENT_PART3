@@ -1,0 +1,930 @@
+/* ==========================================================================
+   Maintenance Essentials - Main Stylesheet (css/style.css)
+   WEDE5020 Part 3 (Final POE)
+   Boitumelo Mafiri 
+   ST10106738
+
+   This one stylesheet controls how all five pages look. It is linked in
+   the <head> of every page, so any change here updates the whole website.
+
+   CONTENTS
+   1. Reset            6. Components (cards, forms, buttons)
+   2. Variables        7. Interactive parts (accordion, lightbox, search, map)
+   3. Base styles      8. Pseudo-classes (hover, focus, active)
+   4. Typography       9. Responsive design (tablet and mobile)
+   5. Layout
+   ========================================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=EB+Garamond:wght@400;600&family=Poppins:wght@300;400;600&display=swap');
+
+
+/* ===== 1. RESET =========================================================
+   Browsers add their own margins and padding, and each browser uses
+   slightly different amounts. Clearing them first means the website
+   looks the same in Chrome, Edge and Safari. */
+
+* {
+  margin: 0;
+  padding: 0;
+  /* border-box makes padding count inside an element's width, which
+       stops boxes overflowing their container */
+  box-sizing: border-box;
+}
+
+
+/* ===== 2. VARIABLES =====================================================
+   The brand colours are stored once here. Writing var(--pink-dark)
+   instead of the hex code means one change updates the whole site. */
+
+:root {
+  --pink-lightest: #FFE5EC;
+  --pink-light: #FFC2D1;
+  --pink-mid: #FFB3C6;
+  --pink: #FF8FAB;
+  --pink-dark: #FB6F92;
+  --charcoal: #2E2E2E;
+  --grey: #6E6E6E;
+  --white: #FFFFFF;
+  --green: #2E7D4F;
+  --red: #C62828;
+
+  --space: 1rem;
+  --radius: 12px;
+  --shadow: 0 2px 8px rgba(251, 111, 146, 0.15);
+}
+
+
+/* ===== 3. BASE STYLES =================================================== */
+
+body {
+  font-family: 'Poppins', Arial, Helvetica, sans-serif;
+  font-size: 1rem;
+  /* rem is relative, so text scales properly */
+  font-weight: 300;
+  line-height: 1.7;
+  color: var(--charcoal);
+  background-color: var(--pink-lightest);
+}
+
+/* Images never spill outside their container and keep their proportions.
+   This single rule is what stops images appearing too big. */
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  border-radius: var(--radius);
+}
+
+main {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 2rem var(--space);
+}
+
+/* Hides text on screen but keeps it readable by screen readers and search
+   engines. Used on the home page, where the logo already shows the brand
+   name, so a visible h1 would look repeated. */
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+
+/* ===== 4. TYPOGRAPHY ====================================================
+   EB Garamond (serif) for headings gives the elegant beauty-brand feel.
+   Poppins (sans-serif) for body text keeps it clean and readable. */
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: 'EB Garamond', Georgia, 'Times New Roman', serif;
+  font-weight: 600;
+  line-height: 1.3;
+  color: var(--charcoal);
+}
+
+h1 {
+  font-size: 2.5rem;
+  letter-spacing: 1px;
+}
+
+h2 {
+  font-size: 1.9rem;
+  color: var(--pink-dark);
+  margin-bottom: 0.75rem;
+}
+
+h3 {
+  font-size: 1.4rem;
+  margin-bottom: 0.4rem;
+}
+
+h4 {
+  font-size: 0.85rem;
+  margin: 1rem 0 0.4rem;
+  color: var(--grey);
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+p {
+  margin-bottom: 0.9rem;
+}
+
+a {
+  color: var(--pink-dark);
+  text-decoration: none;
+}
+
+/* Client reviews, styled with a pink bar down the left side */
+blockquote {
+  font-style: italic;
+  color: var(--grey);
+  border-left: 3px solid var(--pink);
+  padding-left: var(--space);
+  margin: 0.5rem 0;
+}
+
+figcaption {
+  font-size: 0.85rem;
+  color: var(--grey);
+  text-align: center;
+  margin-top: 0.5rem;
+}
+
+
+/* ===== 5. LAYOUT ========================================================
+   Flexbox is used for the header, navigation and footer because those
+   arrange items in a single line. CSS Grid is used for the card layouts
+   because those need rows and columns. */
+
+.site-header {
+  background-color: var(--white);
+  text-align: center;
+  padding: 2rem var(--space) 1.5rem;
+  border-bottom: 3px solid var(--pink-light);
+}
+
+.logo {
+  width: 320px;
+  max-width: 80%;
+  height: auto;
+  margin: 0 auto 0.75rem;
+}
+
+.tagline {
+  color: var(--grey);
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+/* A soft pink gradient bar so the menu feels part of the brand */
+.site-nav {
+  background: linear-gradient(90deg, var(--pink) 0%, var(--pink-dark) 100%);
+  padding: 0.85rem var(--space);
+  position: sticky;
+  /* the menu stays visible while scrolling */
+  top: 0;
+  z-index: 10;
+  box-shadow: 0 2px 10px rgba(251, 111, 146, 0.3);
+}
+
+/* Flexbox lays the five links in a row and centres them */
+.nav-links {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  /* links drop to a new line if space runs out */
+  gap: 0.4rem;
+}
+
+/* Each link is a rounded pill. position: relative is needed so the little
+   underline in ::after can be positioned inside it. */
+.site-nav a {
+  position: relative;
+  color: var(--white);
+  font-size: 0.95rem;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  padding: 0.55rem 1.3rem;
+  border-radius: 999px;
+  /* 999px gives a full pill shape */
+  transition: background-color 0.25s ease, transform 0.2s ease;
+}
+
+/* A small white line hidden under each link, ready to appear on hover.
+   scaleX(0) means it starts with zero width. */
+.site-nav a::after {
+  content: "";
+  position: absolute;
+  left: 25%;
+  bottom: 4px;
+  width: 50%;
+  height: 2px;
+  background-color: var(--white);
+  border-radius: 2px;
+  transform: scaleX(0);
+  transition: transform 0.25s ease;
+}
+
+/* The mobile Menu button is hidden on desktop and shown by a media query */
+.menu-toggle {
+  display: none;
+  width: 100%;
+  background-color: rgba(255, 255, 255, 0.2);
+  color: var(--white);
+  font-family: 'Poppins', Arial, sans-serif;
+  font-size: 1rem;
+  letter-spacing: 1px;
+  padding: 0.6rem;
+  border: none;
+  border-radius: var(--radius);
+  cursor: pointer;
+}
+
+.site-footer {
+  background-color: var(--charcoal);
+  color: var(--pink-light);
+  text-align: center;
+  padding: 2rem var(--space);
+  margin-top: 3rem;
+  font-size: 0.9rem;
+}
+
+.site-footer p {
+  margin-bottom: 0.3rem;
+}
+
+.site-footer a {
+  color: var(--pink-light);
+}
+
+
+/* ===== 6. COMPONENTS ==================================================== */
+
+/* Every section sits on a white panel so it stands out from the pink page */
+section {
+  background-color: var(--white);
+  padding: 2rem;
+  margin-bottom: 2rem;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+}
+
+/* Grid creates equal columns that automatically become fewer columns on
+   smaller screens because of the minmax() value */
+.featured {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1.5rem;
+}
+
+/* The heading must span the full width of the grid, not sit in one column */
+.featured h2 {
+  grid-column: 1 / -1;
+}
+
+.provider-preview {
+  background-color: var(--pink-lightest);
+  padding: var(--space);
+  border-radius: var(--radius);
+  text-align: center;
+  border: 1px solid var(--pink-light);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+/* Fixed heights with object-fit keep every card image the same size and
+   stop tall photos stretching a card. */
+.provider-preview img {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+  /* crops neatly instead of squashing */
+  margin-bottom: 0.75rem;
+}
+
+.hero-image,
+.about-image {
+  width: 100%;
+  max-height: 420px;
+  object-fit: cover;
+}
+
+.provider-list {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  background: none;
+  box-shadow: none;
+  padding: 0;
+}
+
+.provider-card {
+  background-color: var(--white);
+  border: 1px solid var(--pink-light);
+  border-left: 6px solid var(--pink-dark);
+  /* pink accent bar */
+  border-radius: var(--radius);
+  padding: 1.5rem;
+  box-shadow: var(--shadow);
+}
+
+.provider-logo {
+  width: 90px;
+  margin-bottom: 0.75rem;
+}
+
+/* The two work photos sit side by side and wrap on narrow screens */
+.work-gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: var(--space);
+  margin-bottom: var(--space);
+}
+
+.work-gallery img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+
+.locations .location {
+  background-color: var(--pink-lightest);
+  padding: var(--space);
+  border-radius: var(--radius);
+  margin-bottom: var(--space);
+  border-left: 4px solid var(--pink);
+}
+
+.button {
+  display: inline-block;
+  background-color: var(--pink-dark);
+  color: var(--white);
+  font-family: 'Poppins', Arial, sans-serif;
+  font-size: 0.95rem;
+  font-weight: 600;
+  letter-spacing: 1px;
+  padding: 0.7rem 1.6rem;
+  border: none;
+  border-radius: var(--radius);
+  cursor: pointer;
+  transition: background-color 0.25s ease, transform 0.15s ease;
+}
+
+/* --- Forms --- */
+.form-group {
+  margin-bottom: 1.1rem;
+}
+
+.enquiry-form label {
+  display: block;
+  font-weight: 600;
+  font-size: 0.9rem;
+  margin-bottom: 0.3rem;
+}
+
+.enquiry-form input,
+.enquiry-form select,
+.enquiry-form textarea {
+  width: 100%;
+  /* % keeps inputs responsive on any screen */
+  max-width: 480px;
+  font-family: 'Poppins', Arial, sans-serif;
+  font-size: 1rem;
+  padding: 0.65rem;
+  border: 1px solid var(--pink-mid);
+  border-radius: var(--radius);
+  background-color: var(--white);
+  transition: border-color 0.25s ease, box-shadow 0.25s ease;
+}
+
+/* Red validation messages written by JavaScript */
+.error {
+  display: block;
+  color: var(--red);
+  font-size: 0.85rem;
+  margin-top: 0.25rem;
+  min-height: 1rem;
+}
+
+/* The box JavaScript writes the quote or confirmation into */
+.form-status {
+  margin-top: var(--space);
+  padding: 0;
+  border-radius: var(--radius);
+  font-size: 0.95rem;
+}
+
+.form-status:not(:empty) {
+  padding: var(--space);
+}
+
+.success-status {
+  background-color: #EAF6EC;
+  border-left: 4px solid var(--green);
+  color: var(--green);
+}
+
+.error-status {
+  background-color: #FDECEA;
+  border-left: 4px solid var(--red);
+  color: var(--red);
+}
+
+.form-status ul {
+  margin: 0.5rem 0 0.5rem 1.2rem;
+}
+
+.form-status li {
+  margin-bottom: 0.25rem;
+}
+
+
+/* ===== 7. INTERACTIVE PARTS ============================================= */
+
+/* --- Accordion (FAQ) --- */
+.accordion {
+  margin-bottom: 0.5rem;
+}
+
+.accordion-trigger {
+  width: 100%;
+  text-align: left;
+  background-color: var(--pink-lightest);
+  color: var(--charcoal);
+  font-family: 'EB Garamond', Georgia, serif;
+  font-size: 1.15rem;
+  font-weight: 600;
+  padding: 0.9rem var(--space);
+  border: 1px solid var(--pink-light);
+  border-radius: var(--radius);
+  cursor: pointer;
+  transition: background-color 0.25s ease;
+}
+
+/* The + turns into a - when the panel is open */
+.accordion-trigger::after {
+  content: " +";
+  float: right;
+  color: var(--pink-dark);
+}
+
+.accordion-trigger.active::after {
+  content: " \2013";
+}
+
+/* max-height 0 with overflow hidden is what collapses the panel. Animating
+   max-height makes it slide open smoothly instead of jumping. */
+.accordion-panel {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease, padding 0.3s ease;
+  padding: 0 var(--space);
+}
+
+.accordion-panel.open {
+  max-height: 300px;
+  padding: var(--space);
+}
+
+/* --- Gallery and lightbox --- */
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: var(--space);
+}
+
+.gallery-item {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  cursor: pointer;
+  /* shows the image is clickable */
+  transition: transform 0.25s ease, opacity 0.25s ease;
+}
+
+/* The lightbox overlay. display: none keeps it hidden until JavaScript
+   adds the "open" class. position: fixed makes it cover the whole screen. */
+.lightbox {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(46, 46, 46, 0.92);
+  z-index: 100;
+  padding: 2rem;
+  text-align: center;
+}
+
+.lightbox.open {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.lightbox img {
+  max-width: 90%;
+  max-height: 75vh;
+  object-fit: contain;
+  border-radius: var(--radius);
+}
+
+.lightbox-caption {
+  color: var(--white);
+  margin-top: var(--space);
+  font-size: 0.95rem;
+}
+
+.lightbox-close {
+  position: absolute;
+  top: 1rem;
+  right: 1.5rem;
+  background: none;
+  border: none;
+  color: var(--white);
+  font-size: 2.5rem;
+  line-height: 1;
+  cursor: pointer;
+}
+
+/* --- Search and filter --- */
+.search-controls {
+  background-color: var(--pink-lightest);
+  padding: var(--space);
+  border-radius: var(--radius);
+  margin-top: var(--space);
+}
+
+.search-controls label {
+  display: block;
+  font-weight: 600;
+  font-size: 0.9rem;
+  margin-bottom: 0.3rem;
+}
+
+#provider-search {
+  width: 100%;
+  max-width: 480px;
+  font-family: 'Poppins', Arial, sans-serif;
+  font-size: 1rem;
+  padding: 0.65rem;
+  border: 1px solid var(--pink-mid);
+  border-radius: var(--radius);
+}
+
+.filter-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin-top: 0.75rem;
+}
+
+.filter-btn {
+  background-color: var(--white);
+  color: var(--pink-dark);
+  font-family: 'Poppins', Arial, sans-serif;
+  font-size: 0.9rem;
+  font-weight: 600;
+  padding: 0.5rem 1.1rem;
+  border: 1px solid var(--pink-mid);
+  border-radius: 999px;
+  cursor: pointer;
+  transition: background-color 0.25s ease, color 0.25s ease;
+}
+
+/* The currently chosen filter is filled in, so it is obvious which is on */
+.filter-btn.active {
+  background-color: var(--pink-dark);
+  color: var(--white);
+  border-color: var(--pink-dark);
+}
+
+.search-status {
+  margin-top: 0.75rem;
+  margin-bottom: 0;
+  font-size: 0.9rem;
+  font-style: italic;
+  color: var(--grey);
+}
+
+/* --- Interactive map --- */
+/* The padding-bottom trick keeps the map a 16:9 shape at any screen width */
+.map-container {
+  position: relative;
+  width: 100%;
+  padding-bottom: 56.25%;
+  height: 0;
+  overflow: hidden;
+  border-radius: var(--radius);
+  border: 2px solid var(--pink-light);
+  margin-bottom: 0.5rem;
+}
+
+.map-container iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+.map-note {
+  font-size: 0.9rem;
+  font-style: italic;
+  color: var(--grey);
+}
+
+.map-btn {
+  background-color: var(--white);
+  color: var(--pink-dark);
+  font-family: 'Poppins', Arial, sans-serif;
+  font-size: 0.85rem;
+  font-weight: 600;
+  padding: 0.45rem 1rem;
+  border: 1px solid var(--pink-dark);
+  border-radius: 999px;
+  cursor: pointer;
+  margin-top: 0.4rem;
+  transition: background-color 0.25s ease, color 0.25s ease;
+}
+
+.map-btn.active {
+  background-color: var(--pink-dark);
+  color: var(--white);
+}
+
+
+/* ===== 8. PSEUDO-CLASSES ================================================
+   These style an element based on what the user is doing with it:
+   :hover  = the mouse is over it
+   :focus  = it is selected, usually by clicking or pressing Tab
+   :active = it is being clicked right now */
+
+.site-nav a:hover {
+  background-color: rgba(255, 255, 255, 0.22);
+  transform: translateY(-2px);
+}
+
+/* The hidden underline grows to full width when hovered */
+.site-nav a:hover::after {
+  transform: scaleX(1);
+}
+
+/* A visible outline when tabbing through, which helps keyboard users */
+.site-nav a:focus {
+  outline: 3px solid var(--pink-lightest);
+  outline-offset: 2px;
+}
+
+.site-nav a:active {
+  background-color: var(--pink-mid);
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+.button:hover,
+.enquiry-form button:hover {
+  background-color: var(--pink);
+  text-decoration: none;
+  transform: translateY(-2px);
+}
+
+.button:focus,
+.enquiry-form button:focus {
+  outline: 3px solid var(--pink-mid);
+  outline-offset: 2px;
+}
+
+/* Pressing the button pushes it back down so it feels like a real button */
+.button:active,
+.enquiry-form button:active {
+  transform: translateY(0);
+  background-color: var(--charcoal);
+}
+
+.provider-preview:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow);
+}
+
+/* The form field being typed in is highlighted in pink */
+.enquiry-form input:focus,
+.enquiry-form select:focus,
+.enquiry-form textarea:focus,
+#provider-search:focus {
+  outline: none;
+  border-color: var(--pink-dark);
+  box-shadow: 0 0 0 3px var(--pink-lightest);
+}
+
+.accordion-trigger:hover {
+  background-color: var(--pink-light);
+}
+
+.accordion-trigger:focus {
+  outline: 3px solid var(--pink-mid);
+  outline-offset: 2px;
+}
+
+/* Gallery images lift and fade slightly to show they can be clicked */
+.gallery-item:hover {
+  transform: scale(1.04);
+  opacity: 0.88;
+}
+
+.filter-btn:hover,
+.map-btn:hover {
+  background-color: var(--pink-light);
+  color: var(--charcoal);
+}
+
+.lightbox-close:hover {
+  color: var(--pink-light);
+}
+
+
+/* ===== 9. RESPONSIVE DESIGN =============================================
+   Media queries apply different styles at different screen widths. The
+   site is built for desktop first, then adjusted down for tablet and
+   mobile so it stays usable on any device. */
+
+/* --- TABLET: 768px and below --- */
+@media screen and (max-width: 768px) {
+
+  /* Text is scaled down so headings do not dominate a smaller screen */
+  h1 {
+    font-size: 2rem;
+  }
+
+  h2 {
+    font-size: 1.6rem;
+  }
+
+  main {
+    padding: 1.5rem 0.75rem;
+  }
+
+  section {
+    padding: 1.5rem;
+  }
+
+  /* Featured providers drop from three columns to two */
+  .featured {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  /* Shorter images so more content fits on a tablet screen */
+  .provider-preview img {
+    height: 180px;
+  }
+
+  .work-gallery img {
+    height: 170px;
+  }
+
+  .gallery-item {
+    height: 160px;
+  }
+
+  .hero-image {
+    max-height: 320px;
+  }
+
+  .logo {
+    width: 260px;
+  }
+}
+
+
+/* --- MOBILE: 480px and below --- */
+@media screen and (max-width: 480px) {
+
+  body {
+    font-size: 0.95rem;
+  }
+
+  h1 {
+    font-size: 1.6rem;
+    letter-spacing: 0;
+  }
+
+  h2 {
+    font-size: 1.3rem;
+  }
+
+  h3 {
+    font-size: 1.15rem;
+  }
+
+  /* Everything becomes a single column, stacked down the page */
+  .featured,
+  .work-gallery,
+  .gallery {
+    grid-template-columns: 1fr;
+  }
+
+  /* The Menu button appears and the links hide until it is tapped */
+  .menu-toggle {
+    display: block;
+  }
+
+  .nav-links {
+    display: none;
+    /* JavaScript adds .open to show these */
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.25rem;
+    margin-top: 0.6rem;
+  }
+
+  .nav-links.open {
+    display: flex;
+  }
+
+  .site-nav {
+    position: static;
+  }
+
+  /* not sticky, so it does not eat the screen */
+
+  .site-nav a {
+    text-align: center;
+    padding: 0.75rem;
+    /* bigger tap target for fingers */
+    border-radius: var(--radius);
+  }
+
+  /* The sliding underline is a mouse effect, so it is off on touch screens */
+  .site-nav a::after {
+    display: none;
+  }
+
+  main {
+    padding: var(--space) 0.5rem;
+  }
+
+  section {
+    padding: var(--space);
+  }
+
+  .provider-card {
+    padding: var(--space);
+  }
+
+  .site-header {
+    padding: 1.5rem 0.75rem 1rem;
+  }
+
+  .logo {
+    width: 220px;
+  }
+
+  /* Images shrink again so users are not scrolling past one huge picture */
+  .provider-preview img {
+    height: 160px;
+  }
+
+  .work-gallery img {
+    height: 160px;
+  }
+
+  .gallery-item {
+    height: 200px;
+  }
+
+  .hero-image {
+    max-height: 220px;
+  }
+
+  .about-image {
+    max-height: 220px;
+  }
+
+  /* Buttons go full width so they are easy to tap */
+  .button,
+  .enquiry-form button {
+    display: block;
+    width: 100%;
+    text-align: center;
+  }
+
+  .filter-buttons {
+    justify-content: center;
+  }
+
+  .filter-btn {
+    flex: 1 1 40%;
+  }
+}
