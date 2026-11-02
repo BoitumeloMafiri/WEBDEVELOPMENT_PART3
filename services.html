@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<!--
+  Maintenance Essentials - Services Page (services.html)
+  WEDE5020 Part 3 (Final POE) | Boitumelo Mafiri | ST10106738 | Group GR01
+  Lists every vetted provider. Includes a live search box and a category
+  filter, both powered by JavaScript, so visitors can narrow the list
+  without the page reloading.
+-->
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description"
+    content="Browse vetted nail, hair and lash providers in Johannesburg. Compare real work photos, prices, wait times and honest client reviews before you book.">
+  <meta name="keywords"
+    content="nail tech Braamfontein, hair salon Sandton, lash tech Maboneng, gel nails Johannesburg, knotless braids, volume lashes, salon prices Johannesburg">
+  <meta name="author" content="Boitumelo Mafiri">
+  <title>Our Providers | Nail, Hair &amp; Lash Services in Johannesburg</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+  <header class="site-header">
+    <img src="images/maintenance-essentials-logo.png" alt="Maintenance Essentials brand logo" class="logo">
+    <h1>Our Providers</h1>
+  </header>
+
+  <nav class="site-nav" aria-label="Main navigation">
+    <button class="menu-toggle" id="menu-toggle" aria-label="Open navigation menu" aria-expanded="false">&#9776;
+      Menu</button>
+    <div class="nav-links" id="nav-links">
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="services.html">Services</a>
+      <a href="enquiry.html">Enquiry</a>
+      <a href="contact.html">Contact</a>
+    </div>
+  </nav>
+
+  <main>
+
+    <section class="intro">
+      <h2>Browse vetted salons and technicians in Johannesburg</h2>
+      <p>
+        Each provider below has been vetted by Maintenance Essentials. Use the search box or the filter
+        buttons to find exactly what you need, then make an enquiry.
+      </p>
+
+      <!-- Search and filter controls. JavaScript reads these and shows or
+                 hides provider cards instantly as the visitor types or clicks. -->
+      <div class="search-controls">
+        <label for="provider-search">Search providers, services or areas:</label>
+        <input type="search" id="provider-search"
+          placeholder="Try &quot;nails&quot;, &quot;braids&quot; or &quot;Sandton&quot;">
+
+        <div class="filter-buttons">
+          <button class="filter-btn active" data-filter="all">All</button>
+          <button class="filter-btn" data-filter="nails">Nails</button>
+          <button class="filter-btn" data-filter="hair">Hair</button>
+          <button class="filter-btn" data-filter="lashes">Lashes</button>
+        </div>
+
+        <!-- JavaScript writes the number of matching results here -->
+        <p class="search-status" id="search-status" role="status"></p>
+      </div>
+    </section>
+
+    <section class="provider-list" id="provider-list">
+
+      <!-- Provider 1. data-category is read by the filter buttons. -->
+      <article class="provider-card" data-category="nails">
+        <img src="images/glossed-and-co-logo.png" alt="Glossed and Co Nails business logo" class="provider-logo">
+        <h3>Glossed &amp; Co Nails &ndash; Braamfontein</h3>
+        <p><strong>Services:</strong> Nails &ndash; gel overlays, acrylic sets and nail art</p>
+        <p>
+          A cosy Braamfontein nail studio known for clean, long-lasting gel work and detailed nail art.
+          Great for students and young professionals who want a quality set without a long wait.
+        </p>
+        <p><strong>Rating:</strong> 4.8 out of 5 &middot; <strong>Estimated wait:</strong> 45 minutes</p>
+
+        <h4>Some of their work</h4>
+        <div class="work-gallery">
+          <img src="images/glossed-and-co-gel-nails.jpg" alt="Gel nail set by Glossed and Co Nails"
+            class="gallery-item">
+          <img src="images/glossed-and-co-nail-art.jpg" alt="Detailed nail art by Glossed and Co Nails"
+            class="gallery-item">
+        </div>
+
+        <h4>Ratings and reviews</h4>
+        <blockquote>&ldquo;My gel set lasted three weeks with no lifting.&rdquo; &ndash; Thandi M.</blockquote>
+        <blockquote>&ldquo;Clean space and she really took her time.&rdquo; &ndash; Naledi P.</blockquote>
+
+        <p><a href="enquiry.html" class="button">Make an enquiry</a></p>
+      </article>
+
+      <!-- Provider 2 -->
+      <article class="provider-card" data-category="hair">
+        <img src="images/crown-culture-logo.png" alt="Crown Culture Hair business logo" class="provider-logo">
+        <h3>Crown Culture Hair &ndash; Sandton</h3>
+        <p><strong>Services:</strong> Hair &ndash; wig installations, knotless braids, washes and styling</p>
+        <p>
+          A Sandton hair salon that specialises in protective styles and flawless installs. Known for
+          taking their time and treating every client&rsquo;s hair with care.
+        </p>
+        <p><strong>Rating:</strong> 4.7 out of 5 &middot; <strong>Estimated wait:</strong> 90 minutes</p>
+
+        <h4>Some of their work</h4>
+        <div class="work-gallery">
+          <img src="images/crown-culture-hair-installation.jpg" alt="Wig installation by Crown Culture Hair"
+            class="gallery-item">
+          <img src="images/crown-culture-knotless-braids.jpg" alt="Knotless braids by Crown Culture Hair"
+            class="gallery-item">
+        </div>
+
+        <h4>Ratings and reviews</h4>
+        <blockquote>&ldquo;My install looked so natural, I am obsessed.&rdquo; &ndash; Zinhle K.</blockquote>
+        <blockquote>&ldquo;Worth the wait &ndash; my braids are neat and not too tight.&rdquo; &ndash; Aisha D.
+        </blockquote>
+
+        <p><a href="enquiry.html" class="button">Make an enquiry</a></p>
+      </article>
+
+      <!-- Provider 3 -->
+      <article class="provider-card" data-category="lashes">
+        <img src="images/lash-lounge-jhb-logo.png" alt="Lash Lounge JHB business logo" class="provider-logo">
+        <h3>Lash Lounge JHB &ndash; Maboneng</h3>
+        <p><strong>Services:</strong> Lashes &ndash; classic sets, volume sets and lash fills</p>
+        <p>
+          A calm Maboneng lash studio offering classic and volume sets. Loved for its gentle application
+          and lashes that keep their shape for weeks.
+        </p>
+        <p><strong>Rating:</strong> 4.9 out of 5 &middot; <strong>Estimated wait:</strong> 60 minutes</p>
+
+        <h4>Some of their work</h4>
+        <div class="work-gallery">
+          <img src="images/lash-lounge-jhb-classic-lashes.jpg" alt="Classic lash set by Lash Lounge JHB"
+            class="gallery-item">
+          <img src="images/lash-lounge-jhb-volume-lashes.jpg" alt="Volume lash set by Lash Lounge JHB"
+            class="gallery-item">
+        </div>
+
+        <h4>Ratings and reviews</h4>
+        <blockquote>&ldquo;The gentlest lash application I have had.&rdquo; &ndash; Boitumelo S.</blockquote>
+        <blockquote>&ldquo;My volume set still looked full after two weeks.&rdquo; &ndash; Karabo M.</blockquote>
+
+        <p><a href="enquiry.html" class="button">Make an enquiry</a></p>
+      </article>
+
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <p>Maintenance Essentials &middot; Johannesburg, South Africa</p>
+    <p>Email: hello@maintenanceessentials.co.za &middot; Phone: 011 000 0000</p>
+    <p>&copy; <span id="year">2026</span> Maintenance Essentials. All rights reserved.</p>
+  </footer>
+
+  <div class="lightbox" id="lightbox" role="dialog" aria-label="Enlarged image view">
+    <button class="lightbox-close" id="lightbox-close" aria-label="Close image">&times;</button>
+    <img src="" alt="" id="lightbox-image">
+    <p class="lightbox-caption" id="lightbox-caption"></p>
+  </div>
+
+  <script src="js/script.js"></script>
+</body>
+
+</html>
