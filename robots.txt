@@ -1,0 +1,8 @@
+# robots.txt for Maintenance Essentials
+# Tells search engine crawlers which pages they may index.
+
+User-agent: *
+Allow: /
+
+# Points crawlers to the sitemap so they can find every page
+Sitemap: https://maintenance-essentials.netlify.app/sitemap.xml
