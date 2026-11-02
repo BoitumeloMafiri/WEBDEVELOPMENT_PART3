@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<!--
+  Maintenance Essentials - Home Page (index.html)
+  WEDE5020 Part 3 (Final POE) | Boitumelo Mafiri | ST10106738 | Group GR01
+  Landing page. Introduces the brand, explains "Maintenance Week", shows
+  featured providers, and includes an image gallery with a lightbox that
+  opens each photo in a larger view when clicked.
+-->
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <!-- Makes the page responsive on mobile devices -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- SEO: description shown by search engines under the page title -->
+  <meta name="description"
+    content="Maintenance Essentials helps young women in Johannesburg find, compare and book trusted nail, hair and lash providers with real work photos, prices and honest reviews.">
+  <!-- SEO: keywords relevant to what users search for -->
+  <meta name="keywords"
+    content="beauty maintenance Johannesburg, nail tech Braamfontein, hair salon Sandton, lash tech Maboneng, book beauty appointment, vetted salons South Africa">
+  <meta name="author" content="Boitumelo Mafiri">
+
+  <!-- SEO: descriptive title tag unique to this page -->
+  <title>Maintenance Essentials | Trusted Beauty Providers in Johannesburg</title>
+
+  <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+  <!-- Website Header -->
+  <header class="site-header">
+    <img src="images/maintenance-essentials-logo.png" alt="Maintenance Essentials brand logo" class="logo">
+    <h1 class="visually-hidden">Maintenance Essentials</h1>
+    <p class="tagline">Find, compare and book your monthly beauty maintenance in Johannesburg.</p>
+  </header>
+
+  <!-- Website Navigation. The button only shows on mobile and is
+         controlled by JavaScript to open and close the menu. -->
+  <nav class="site-nav" aria-label="Main navigation">
+    <button class="menu-toggle" id="menu-toggle" aria-label="Open navigation menu" aria-expanded="false">&#9776;
+      Menu</button>
+    <div class="nav-links" id="nav-links">
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="services.html">Services</a>
+      <a href="enquiry.html">Enquiry</a>
+      <a href="contact.html">Contact</a>
+    </div>
+  </nav>
+
+  <main>
+
+    <!-- Hero section introducing Maintenance Week -->
+    <section class="hero">
+      <h2>Every first week of the month is Maintenance Week</h2>
+      <figure>
+        <img src="images/maintenance-week-hero-nails-hair.jpg"
+          alt="Young women in Johannesburg having their nails and hair done during Maintenance Week" class="hero-image">
+        <figcaption>Maintenance Week: nails, hair and lashes, all sorted in one week.</figcaption>
+      </figure>
+      <p>
+        Looking and feeling good is part of how we show up each month. Maintenance Essentials is built
+        around &ldquo;Maintenance Week&rdquo; &ndash; the first week of every month set aside for nails,
+        hair and lashes.
+      </p>
+      <p>
+        Instead of scrolling TikTok for hours or gambling on a random salon, you can discover trusted
+        salons and nail techs in Johannesburg, see their real work, their prices and their wait times,
+        all in one place.
+      </p>
+      <p><a href="services.html" class="button">Browse our trusted providers</a></p>
+    </section>
+
+    <!-- Accordion: an interactive element built with JavaScript. Clicking a
+             question opens its answer and closes it again when clicked twice. -->
+    <section class="faq">
+      <h2>Frequently asked questions</h2>
+
+      <div class="accordion">
+        <button class="accordion-trigger" aria-expanded="false">How do you vet your providers?</button>
+        <div class="accordion-panel">
+          <p>We check every provider's portfolio, reviews and hygiene standards before listing them, and we remove
+            anyone who is consistently rated poorly.</p>
+        </div>
+      </div>
+
+      <div class="accordion">
+        <button class="accordion-trigger" aria-expanded="false">Does it cost anything to book?</button>
+        <div class="accordion-panel">
+          <p>No. Browsing and enquiring is free for clients. Providers pay to be listed on the platform.</p>
+        </div>
+      </div>
+
+      <div class="accordion">
+        <button class="accordion-trigger" aria-expanded="false">Can I get listed as a provider?</button>
+        <div class="accordion-panel">
+          <p>Yes. Salons and independent technicians in Johannesburg can apply through the &ldquo;Get Listed&rdquo; form
+            on our <a href="enquiry.html">Enquiry page</a>.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Featured providers. Each provider is an article so CSS can style it as a card. -->
+    <section class="featured">
+      <h2>Featured providers</h2>
+
+      <article class="provider-preview">
+        <a href="services.html"><img src="images/glossed-and-co-gel-nails.jpg"
+            alt="Gel nail set with nail art by Glossed and Co Nails in Braamfontein"></a>
+        <h3>Glossed &amp; Co Nails</h3>
+        <p>Gel overlays and nail art. From R250 &middot; Wait: 45 min &middot; Rating: 4.8/5</p>
+      </article>
+
+      <article class="provider-preview">
+        <a href="services.html"><img src="images/crown-culture-hair-installation.jpg"
+            alt="Wig installation styled by Crown Culture Hair in Sandton"></a>
+        <h3>Crown Culture Hair</h3>
+        <p>Hair installations and styling. From R400 &middot; Wait: 90 min &middot; Rating: 4.7/5</p>
+      </article>
+
+      <article class="provider-preview">
+        <a href="services.html"><img src="images/lash-lounge-jhb-volume-lashes.jpg"
+            alt="Volume lash set applied by Lash Lounge JHB in Maboneng"></a>
+        <h3>Lash Lounge JHB</h3>
+        <p>Classic and volume lashes. From R300 &middot; Wait: 60 min &middot; Rating: 4.9/5</p>
+      </article>
+    </section>
+
+    <!-- Image gallery. JavaScript opens each image in a lightbox overlay
+             so visitors can view the work in a larger size. -->
+    <section class="gallery-section">
+      <h2>Our work gallery</h2>
+      <p>Click any photo to view it larger.</p>
+
+      <div class="gallery" id="gallery">
+        <img src="images/glossed-and-co-gel-nails.jpg" alt="Gel nail set by Glossed and Co Nails" class="gallery-item">
+        <img src="images/glossed-and-co-nail-art.jpg" alt="Detailed nail art design by Glossed and Co Nails"
+          class="gallery-item">
+        <img src="images/crown-culture-hair-installation.jpg" alt="Wig installation by Crown Culture Hair"
+          class="gallery-item">
+        <img src="images/crown-culture-knotless-braids.jpg" alt="Knotless braids styled by Crown Culture Hair"
+          class="gallery-item">
+        <img src="images/lash-lounge-jhb-classic-lashes.jpg" alt="Classic lash set by Lash Lounge JHB"
+          class="gallery-item">
+        <img src="images/lash-lounge-jhb-volume-lashes.jpg" alt="Volume lash set by Lash Lounge JHB"
+          class="gallery-item">
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Website Footer. The year is filled in automatically by JavaScript. -->
+  <footer class="site-footer">
+    <p>Maintenance Essentials &middot; Johannesburg, South Africa</p>
+    <p>Email: hello@maintenanceessentials.co.za &middot; Phone: 011 000 0000</p>
+    <p>&copy; <span id="year">2026</span> Maintenance Essentials. All rights reserved.</p>
+  </footer>
+
+  <!-- Lightbox overlay. It stays hidden until JavaScript shows it. -->
+  <div class="lightbox" id="lightbox" role="dialog" aria-label="Enlarged image view">
+    <button class="lightbox-close" id="lightbox-close" aria-label="Close image">&times;</button>
+    <img src="" alt="" id="lightbox-image">
+    <p class="lightbox-caption" id="lightbox-caption"></p>
+  </div>
+
+  <script src="js/script.js"></script>
+</body>
+
+</html>
