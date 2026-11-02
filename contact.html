@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<!--
+  Maintenance Essentials - Contact Page (contact.html)
+  WEDE5020 Part 3 (Final POE) | Boitumelo Mafiri | ST10106738 | Group GR01
+  Shows both branch locations with an embedded interactive Google Map,
+  and a contact form. Once validated, JavaScript compiles the visitor's
+  details into an email and opens their email program to send it.
+-->
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description"
+    content="Contact Maintenance Essentials. Visit our Braamfontein or Sandton branch in Johannesburg, find us on the map, or send us a message directly.">
+  <meta name="keywords"
+    content="contact Maintenance Essentials, beauty salon Braamfontein address, Sandton beauty studio, Johannesburg salon contact, beauty platform enquiries">
+  <meta name="author" content="Boitumelo Mafiri">
+  <title>Contact Us | Visit Our Braamfontein &amp; Sandton Branches</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+  <header class="site-header">
+    <img src="images/maintenance-essentials-logo.png" alt="Maintenance Essentials brand logo" class="logo">
+    <h1>Contact Us</h1>
+  </header>
+
+  <nav class="site-nav" aria-label="Main navigation">
+    <button class="menu-toggle" id="menu-toggle" aria-label="Open navigation menu" aria-expanded="false">&#9776;
+      Menu</button>
+    <div class="nav-links" id="nav-links">
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="services.html">Services</a>
+      <a href="enquiry.html">Enquiry</a>
+      <a href="contact.html">Contact</a>
+    </div>
+  </nav>
+
+  <main>
+
+    <section class="contact-details">
+      <h2>Get in touch</h2>
+      <p>Email: <a href="mailto:hello@maintenanceessentials.co.za">hello@maintenanceessentials.co.za</a></p>
+      <p>Phone: <a href="tel:+27110000000">011 000 0000</a></p>
+      <p>WhatsApp: 060 000 0000</p>
+    </section>
+
+    <!-- Both branch locations, with buttons that move the interactive map
+             to the chosen branch using JavaScript. -->
+    <section class="locations">
+      <h2>Our locations</h2>
+
+      <article class="location">
+        <h3>Braamfontein branch</h3>
+        <p>78 Juta Street, Braamfontein, Johannesburg, 2001</p>
+        <p>Open: Monday to Saturday, 09:00 &ndash; 18:00</p>
+        <button class="map-btn active" data-location="braamfontein">Show on map</button>
+      </article>
+
+      <article class="location">
+        <h3>Sandton branch</h3>
+        <p>15 Rivonia Road, Sandton, Johannesburg, 2196</p>
+        <p>Open: Monday to Saturday, 09:00 &ndash; 18:00</p>
+        <button class="map-btn" data-location="sandton">Show on map</button>
+      </article>
+
+      <!-- Interactive Google Map embed. JavaScript swaps the src of this
+                 iframe when a visitor clicks one of the buttons above. -->
+      <h3>Find us on the map</h3>
+      <div class="map-container">
+        <iframe id="location-map"
+          src="https://www.google.com/maps?q=78+Juta+Street,+Braamfontein,+Johannesburg&output=embed"
+          title="Map showing the Maintenance Essentials Braamfontein branch" loading="lazy" allowfullscreen>
+        </iframe>
+      </div>
+      <p class="map-note" id="map-note">Currently showing: Braamfontein branch</p>
+    </section>
+
+    <!-- Contact form. JavaScript validates it, then builds an email from
+             the input and opens the visitor's email program to send it. -->
+    <section class="form-section">
+      <h2>Send us a message</h2>
+
+      <form id="contact-form" class="enquiry-form" action="#" method="post" novalidate>
+
+        <div class="form-group">
+          <label for="c-name">Full name *</label>
+          <input type="text" id="c-name" name="c-name" placeholder="Your full name" required>
+          <small class="error" id="c-name-error"></small>
+        </div>
+
+        <div class="form-group">
+          <label for="c-email">Email address *</label>
+          <input type="email" id="c-email" name="c-email" placeholder="you@example.com" required>
+          <small class="error" id="c-email-error"></small>
+        </div>
+
+        <div class="form-group">
+          <label for="c-phone">Phone number</label>
+          <input type="tel" id="c-phone" name="c-phone" placeholder="0721234567">
+          <small class="error" id="c-phone-error"></small>
+        </div>
+
+        <div class="form-group">
+          <label for="c-type">Type of message *</label>
+          <select id="c-type" name="c-type" required>
+            <option value="">Please select a message type</option>
+            <option value="General enquiry">General enquiry</option>
+            <option value="Booking question">Booking question</option>
+            <option value="Provider listing">Provider listing</option>
+            <option value="Complaint">Complaint</option>
+            <option value="Compliment">Compliment</option>
+          </select>
+          <small class="error" id="c-type-error"></small>
+        </div>
+
+        <div class="form-group">
+          <label for="c-message">Your message *</label>
+          <textarea id="c-message" name="c-message" rows="5" placeholder="How can we help?" required></textarea>
+          <small class="error" id="c-message-error"></small>
+        </div>
+
+        <button type="submit" class="button">Send message</button>
+        <div class="form-status" id="contact-status" role="status"></div>
+      </form>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <p>Maintenance Essentials &middot; Johannesburg, South Africa</p>
+    <p>Email: hello@maintenanceessentials.co.za &middot; Phone: 011 000 0000</p>
+    <p>&copy; <span id="year">2026</span> Maintenance Essentials. All rights reserved.</p>
+  </footer>
+
+  <script src="js/script.js"></script>
+</body>
+
+</html><!DOCTYPE html>
+<!--
+  Maintenance Essentials - Contact Page (contact.html)
+  WEDE5020 Part 3 (Final POE) | Boitumelo Mafiri | ST10106738 | Group GR01
+  Shows both branch locations with an embedded interactive Google Map,
+  and a contact form. Once validated, JavaScript compiles the visitor's
+  details into an email and opens their email program to send it.
+-->
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description"
+    content="Contact Maintenance Essentials. Visit our Braamfontein or Sandton branch in Johannesburg, find us on the map, or send us a message directly.">
+  <meta name="keywords"
+    content="contact Maintenance Essentials, beauty salon Braamfontein address, Sandton beauty studio, Johannesburg salon contact, beauty platform enquiries">
+  <meta name="author" content="Boitumelo Mafiri">
+  <title>Contact Us | Visit Our Braamfontein &amp; Sandton Branches</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+  <header class="site-header">
+    <img src="images/maintenance-essentials-logo.png" alt="Maintenance Essentials brand logo" class="logo">
+    <h1>Contact Us</h1>
+  </header>
+
+  <nav class="site-nav" aria-label="Main navigation">
+    <button class="menu-toggle" id="menu-toggle" aria-label="Open navigation menu" aria-expanded="false">&#9776;
+      Menu</button>
+    <div class="nav-links" id="nav-links">
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="services.html">Services</a>
+      <a href="enquiry.html">Enquiry</a>
+      <a href="contact.html">Contact</a>
+    </div>
+  </nav>
+
+  <main>
+
+    <section class="contact-details">
+      <h2>Get in touch</h2>
+      <p>Email: <a href="mailto:hello@maintenanceessentials.co.za">hello@maintenanceessentials.co.za</a></p>
+      <p>Phone: <a href="tel:+27110000000">011 000 0000</a></p>
+      <p>WhatsApp: 060 000 0000</p>
+    </section>
+
+    <!-- Both branch locations, with buttons that move the interactive map
+             to the chosen branch using JavaScript. -->
+    <section class="locations">
+      <h2>Our locations</h2>
+
+      <article class="location">
+        <h3>Braamfontein branch</h3>
+        <p>78 Juta Street, Braamfontein, Johannesburg, 2001</p>
+        <p>Open: Monday to Saturday, 09:00 &ndash; 18:00</p>
+        <button class="map-btn active" data-location="braamfontein">Show on map</button>
+      </article>
+
+      <article class="location">
+        <h3>Sandton branch</h3>
+        <p>15 Rivonia Road, Sandton, Johannesburg, 2196</p>
+        <p>Open: Monday to Saturday, 09:00 &ndash; 18:00</p>
+        <button class="map-btn" data-location="sandton">Show on map</button>
+      </article>
+
+      <!-- Interactive Google Map embed. JavaScript swaps the src of this
+                 iframe when a visitor clicks one of the buttons above. -->
+      <h3>Find us on the map</h3>
+      <div class="map-container">
+        <iframe id="location-map"
+          src="https://www.google.com/maps?q=78+Juta+Street,+Braamfontein,+Johannesburg&output=embed"
+          title="Map showing the Maintenance Essentials Braamfontein branch" loading="lazy" allowfullscreen>
+        </iframe>
+      </div>
+      <p class="map-note" id="map-note">Currently showing: Braamfontein branch</p>
+    </section>
+
+    <!-- Contact form. JavaScript validates it, then builds an email from
+             the input and opens the visitor's email program to send it. -->
+    <section class="form-section">
+      <h2>Send us a message</h2>
+
+      <form id="contact-form" class="enquiry-form" action="#" method="post" novalidate>
+
+        <div class="form-group">
+          <label for="c-name">Full name *</label>
+          <input type="text" id="c-name" name="c-name" placeholder="Your full name" required>
+          <small class="error" id="c-name-error"></small>
+        </div>
+
+        <div class="form-group">
+          <label for="c-email">Email address *</label>
+          <input type="email" id="c-email" name="c-email" placeholder="you@example.com" required>
+          <small class="error" id="c-email-error"></small>
+        </div>
+
+        <div class="form-group">
+          <label for="c-phone">Phone number</label>
+          <input type="tel" id="c-phone" name="c-phone" placeholder="0721234567">
+          <small class="error" id="c-phone-error"></small>
+        </div>
+
+        <div class="form-group">
+          <label for="c-type">Type of message *</label>
+          <select id="c-type" name="c-type" required>
+            <option value="">Please select a message type</option>
+            <option value="General enquiry">General enquiry</option>
+            <option value="Booking question">Booking question</option>
+            <option value="Provider listing">Provider listing</option>
+            <option value="Complaint">Complaint</option>
+            <option value="Compliment">Compliment</option>
+          </select>
+          <small class="error" id="c-type-error"></small>
+        </div>
+
+        <div class="form-group">
+          <label for="c-message">Your message *</label>
+          <textarea id="c-message" name="c-message" rows="5" placeholder="How can we help?" required></textarea>
+          <small class="error" id="c-message-error"></small>
+        </div>
+
+        <button type="submit" class="button">Send message</button>
+        <div class="form-status" id="contact-status" role="status"></div>
+      </form>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <p>Maintenance Essentials &middot; Johannesburg, South Africa</p>
+    <p>Email: hello@maintenanceessentials.co.za &middot; Phone: 011 000 0000</p>
+    <p>&copy; <span id="year">2026</span> Maintenance Essentials. All rights reserved.</p>
+  </footer>
+
+  <script src="js/script.js"></script>
+</body>
+
+</html>
