@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<!--
+  Maintenance Essentials - Enquiry Page (enquiry.html)
+  WEDE5020 Part 3 (Final POE) | Boitumelo Mafiri | ST10106738 | Group GR01
+  Holds two forms. The booking form is validated by JavaScript and then
+  processes the input to show the client an estimated cost and the next
+  available Maintenance Week date. The second form lets providers apply
+  to be listed on the platform.
+-->
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description"
+    content="Enquire about booking a trusted nail, hair or lash provider in Johannesburg, or register your salon to be listed on Maintenance Essentials.">
+  <meta name="keywords"
+    content="book beauty appointment Johannesburg, salon enquiry, get listed salon, beauty provider registration, nail booking Braamfontein">
+  <meta name="author" content="Boitumelo Mafiri">
+  <title>Make an Enquiry | Book a Provider | Maintenance Essentials</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+  <header class="site-header">
+    <img src="images/maintenance-essentials-logo.png" alt="Maintenance Essentials brand logo" class="logo">
+    <h1>Make an Enquiry</h1>
+  </header>
+
+  <nav class="site-nav" aria-label="Main navigation">
+    <button class="menu-toggle" id="menu-toggle" aria-label="Open navigation menu" aria-expanded="false">&#9776;
+      Menu</button>
+    <div class="nav-links" id="nav-links">
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="services.html">Services</a>
+      <a href="enquiry.html">Enquiry</a>
+      <a href="contact.html">Contact</a>
+    </div>
+  </nav>
+
+  <main>
+
+    <!-- Booking enquiry form. JavaScript validates every field and then
+             calculates an estimated price and availability for the visitor. -->
+    <section class="form-section">
+      <h2>Book your maintenance</h2>
+      <p>Fill in the form below and we will show you an estimated price and the next available slot.</p>
+
+      <form id="enquiry-form" class="enquiry-form" action="#" method="post" novalidate>
+
+        <div class="form-group">
+          <label for="name">First name *</label>
+          <input type="text" id="name" name="name" placeholder="Your first name" required>
+          <small class="error" id="name-error"></small>
+        </div>
+
+        <div class="form-group">
+          <label for="surname">Surname *</label>
+          <input type="text" id="surname" name="surname" placeholder="Your surname" required>
+          <small class="error" id="surname-error"></small>
+        </div>
+
+        <div class="form-group">
+          <label for="email">Email address *</label>
+          <input type="email" id="email" name="email" placeholder="you@example.com" required>
+          <small class="error" id="email-error"></small>
+        </div>
+
+        <div class="form-group">
+          <label for="phone">Phone number *</label>
+          <input type="tel" id="phone" name="phone" placeholder="0721234567" required>
+          <small class="error" id="phone-error"></small>
+        </div>
+
+        <div class="form-group">
+          <label for="service">Service needed *</label>
+          <select id="service" name="service" required>
+            <option value="">Please select a service</option>
+            <option value="gel-nails">Gel overlay (nails)</option>
+            <option value="acrylic-nails">Acrylic set (nails)</option>
+            <option value="wig-install">Wig installation (hair)</option>
+            <option value="braids">Knotless braids (hair)</option>
+            <option value="classic-lashes">Classic lash set (lashes)</option>
+            <option value="volume-lashes">Volume lash set (lashes)</option>
+          </select>
+          <small class="error" id="service-error"></small>
+        </div>
+
+        <div class="form-group">
+          <label for="date">Preferred date *</label>
+          <input type="date" id="date" name="date" required>
+          <small class="error" id="date-error"></small>
+        </div>
+
+        <div class="form-group">
+          <label for="message">Additional notes</label>
+          <textarea id="message" name="message" rows="4" placeholder="Tell us what you are looking for"></textarea>
+        </div>
+
+        <button type="submit" class="button">Get my quote</button>
+
+        <!-- JavaScript writes the validation result and the quote here -->
+        <div class="form-status" id="enquiry-status" role="status"></div>
+      </form>
+    </section>
+
+    <!-- Provider sign-up form, also validated by JavaScript -->
+    <section class="form-section">
+      <h2>Are you a beauty provider? Get listed</h2>
+      <p>
+        Salons and independent technicians in Johannesburg can join Maintenance Essentials and reach more
+        clients. This is especially useful if you do not yet have your own website.
+      </p>
+
+      <form id="provider-form" class="enquiry-form" action="#" method="post" novalidate>
+
+        <div class="form-group">
+          <label for="business">Business name *</label>
+          <input type="text" id="business" name="business" placeholder="Your salon or studio name" required>
+          <small class="error" id="business-error"></small>
+        </div>
+
+        <div class="form-group">
+          <label for="provider-email">Email address *</label>
+          <input type="email" id="provider-email" name="provider-email" placeholder="you@example.com" required>
+          <small class="error" id="provider-email-error"></small>
+        </div>
+
+        <div class="form-group">
+          <label for="offer">Services you offer *</label>
+          <input type="text" id="offer" name="offer" placeholder="For example: gel nails and nail art" required>
+          <small class="error" id="offer-error"></small>
+        </div>
+
+        <button type="submit" class="button">Request a listing</button>
+        <div class="form-status" id="provider-status" role="status"></div>
+      </form>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <p>Maintenance Essentials &middot; Johannesburg, South Africa</p>
+    <p>Email: hello@maintenanceessentials.co.za &middot; Phone: 011 000 0000</p>
+    <p>&copy; <span id="year">2026</span> Maintenance Essentials. All rights reserved.</p>
+  </footer>
+
+  <script src="js/script.js"></script>
+</body>
+
+</html>
